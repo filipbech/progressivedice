@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target":"ES6",
+        "sourceMap": true,
+        "outDir":"public",
+        "lib": [
+            "es2017",
+            "dom" 
+        ]
+    },
+    "files": [
+        "src/game.ts",
+        "src/sw.ts"
+    ]
+}

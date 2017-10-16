@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name=description content="Progressive online snake game - works offline">
+	<meta name=viewport content="width=device-width,user-scalable=no">
+	<link rel=canonical href="https://https://progressivedice.firebaseapp.com/">
+	<link rel=manifest href=manifest.json>
+	<meta name=mobile-web-app-capable content=yes>
+	<meta name=apple-mobile-web-app-capable content=yes>
+	<meta name=application-name content="Snake">
+	<meta name=apple-mobile-web-app-status-bar-style content=black>
+	<meta name=apple-mobile-web-app-title content="Snake">
+	<link rel=icon sizes=192x192 href=/icon_192.png>
+	<link rel=apple-touch-icon href=/icon_192.png>
+	<meta name=msapplication-TileImage content=/icon_144.png>
+	<meta name=msapplication-TileColor content=#FFFFFF>
+	<meta name=theme-color content=#0000FF>
+	<meta property=og:title content="Snake">
+	<meta property=og:type content=website>
+	<meta property=og:image content=https://https://progressivedice.firebaseapp.com/icon_192.png>
+	<meta property=og:url content="https://https://progressivedice.firebaseapp.com/">
+	<meta property=og:description content="Progressive online snake game - works offline">
+	<meta name=twitter:card content=summary>
+	<meta name=twitter:url content="https://https://progressivedice.firebaseapp.com/'">
+	<meta name=twitter:title content="Snake">
+	<meta name=twitter:description content="Progressive online snake game - works offline">
+	<meta name=twitter:image content=https://https://progressivedice.firebaseapp.com/icon_192.png>
+    <meta name=twitter:creator content=@filipbech>
+    
+
+    <title>Progressive Dice</title>
+    <style>
+        @keyframes shake {
+            10%, 90% {
+                transform: rotate(5deg);
+            }
+
+            20%, 80% {
+                transform: rotate(-10deg);
+            }
+
+            30%, 50%, 70% {
+                transform: rotate(20deg);
+            }
+
+            40%, 60% {
+                transform: rotate(-20deg);
+            }
+        }
+
+        @-webkit-keyframes shake {
+            10%, 90% {
+                transform: rotate(5deg);
+            }
+
+            20%, 80% {
+                transform: rotate(-10deg);
+            }
+
+            30%, 50%, 70% {
+                transform: rotate(20deg);
+            }
+
+            40%, 60% {
+                transform: rotate(-20deg);
+            }
+        }
+
+        body {
+            --dicesize:60px;
+            --margin-horisontal:35px;
+            --margin-vertical:15px;
+            --margin: var(--margin-vertical) var(--margin-horisontal);
+            margin: var(--margin);
+            font-family: "Arial Narrow", Arial, sans-serif;
+        }
+        h1 {
+            margin:0 0 var(--margin-vertical);
+        }
+        .dice-container {
+            display:block;
+        }
+        p-dice {
+            display:block;
+            border:4px solid #000;
+            box-sizing: border-box;
+            border-radius: 6px;
+            float: left;
+            position: relative;
+            width: 30%;
+            padding-bottom: 30%;
+            margin: 0 5% 5% 0;
+            cursor: pointer;
+        }
+        p-dice:nth-of-type(3n+1) {
+            /* First in the row*/
+            margin-left:0;
+        }
+        p-dice:nth-of-type(3n) {
+            /* Last in each row*/
+            margin-right:0;
+        }
+
+
+        p-dice div {
+            font-size:35px;
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+        }
+        p-dice.locked {
+            border-color:red;
+        }
+
+        select {
+            background:none;
+            border:2px solid #999;
+            color:#999;
+            margin:0 10px 0 0;
+            padding:5px 10px;
+            cursor: pointer;
+            border-radius: 3px;            
+        }
+
+        button {
+            background:none;
+            border:2px solid #999;
+            color:#999;
+            margin:0 0 var(--margin-vertical) 0;
+            padding:5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .primary-btn {
+            display:block;
+            width:100%;
+            border-width: 4px;
+            border-radius: 5px;
+            padding:10px 20px;
+            font-size:20px;
+        }
+
+
+    </style>
+	<meta name=description content="Progressive online snake game - works offline">
+	<meta name=viewport content="width=device-width,user-scalable=no">
+	<link rel=canonical href="https://https://progressivedice.firebaseapp.com/">
+	<link rel=manifest href=manifest.json>
+	<meta name=mobile-web-app-capable content=yes>
+	<meta name=apple-mobile-web-app-capable content=yes>
+	<meta name=application-name content="Snake">
+	<meta name=apple-mobile-web-app-status-bar-style content=black>
+	<meta name=apple-mobile-web-app-title content="Snake">
+	<link rel=icon sizes=192x192 href=/icon_192.png>
+	<link rel=apple-touch-icon href=/icon_192.png>
+	<meta name=msapplication-TileImage content=/icon_144.png>
+	<meta name=msapplication-TileColor content=#FFFFFF>
+	<meta name=theme-color content=#0000FF>
+	<meta property=og:title content="Snake">
+	<meta property=og:type content=website>
+	<meta property=og:image content=https://https://progressivedice.firebaseapp.com/icon_192.png>
+	<meta property=og:url content="https://https://progressivedice.firebaseapp.com/">
+	<meta property=og:description content="Progressive online snake game - works offline">
+	<meta name=twitter:card content=summary>
+	<meta name=twitter:url content="https://https://progressivedice.firebaseapp.com/'">
+	<meta name=twitter:title content="Snake">
+	<meta name=twitter:description content="Progressive online snake game - works offline">
+	<meta name=twitter:image content=https://https://progressivedice.firebaseapp.com/icon_192.png>
+	<meta name=twitter:creator content=@filipbech>
+</head>
+<body>
+
+    <div id="game">
+        <h1>Progressive Dice</h1>
+    </div>
+
+    <script src="game.js"></script>
+    <script>
+       const game = new Game(document.getElementById('game'));
+    </script>
+	<script>
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register('/sw.js', { scope: '/' });
+		}
+	</script>
+</body>
+</html>

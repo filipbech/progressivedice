@@ -1,0 +1,22 @@
+{
+  "name": "progressivedice",
+  "version": "0.0.1",
+  "description": "Virtual dice",
+  "main": "index.html",
+  "scripts": {
+    "watch": "copyfiles src/*.html src/*.json src/icon/* public --up && tsc --watch",
+    "deploy": "copyfiles src/*.html src/*.json src/icon/* public --up && tsc && firebase deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filipbech/progressivedice.git"
+  },
+  "author": "Filip Bech-Larsen",
+  "bugs": {
+    "url": "https://github.com/filipbech/progressivedice/issues"
+  },
+  "homepage": "https://github.com/filipbech/progressivedice#readme",
+  "dependencies": {
+    "copyfiles": "^1.2.0"
+  }
+}
