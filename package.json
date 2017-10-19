@@ -4,8 +4,8 @@
   "description": "Virtual dice",
   "main": "index.html",
   "scripts": {
-    "watch": "copyfiles src/*.html src/*.json src/icon/* public --up && tsc --watch",
-    "deploy": "copyfiles src/*.html src/*.json src/icon/* public --up && tsc && firebase deploy"
+    "watch": "copyfiles src/*.html src/*.json src/icon/* copyfiles src/*.html node_modules/shake.js/shake.js public --up && tsc --watch",
+    "deploy": "copyfiles src/*.html src/*.json src/icon/* node_modules/shake.js/shake.js public --up && tsc && firebase deploy"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/filipbech/progressivedice#readme",
   "dependencies": {
-    "copyfiles": "^1.2.0"
+    "copyfiles": "^1.2.0",
+    "shake.js": "^1.2.2"
   }
 }

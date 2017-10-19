@@ -165,58 +165,18 @@ class Game {
     }
 }
 
+const game = new Game(document.getElementById('game'));
 
-// class Dice {
-//     private _locked = false;;
-//     public set locked(val) {
-//         this._locked = val;
-//         if(this._locked) {
-//             this.element.classList.add('locked');
-//             return;
-//         }
-//         this.element.classList.remove('locked');
-//     }
-//     public get locked() {
-//         return this._locked;
-//     }
-    
-//     private _value = null;
-//     public set value(val) {
-//         this._value = val;
+if('ondevicemotion' in window) {
+    const scriptTag = document.createElement('script');
+    scriptTag.onload = function() {
+        new window['Shake']().start();
+        window.addEventListener('shake', e => {
+            game.rollAllDice();
+        });
+    }
+    scriptTag.src = 'shake.js';
+    document.body.appendChild(scriptTag);
+}
 
-//         if(this.element) {
-//             this.element.innerText = this._value;
-//         }
-//     }
-//     public get value() {
-//         return this._value;
-//     }
 
-//     roll(){
-//         let randomTime = 400+Math.floor(Math.random()*600);
-
-//         this.element.style.animation = '';
-//         this.element.style.webkitAnimation = '';
-//         requestAnimationFrame(_=>{
-//             requestAnimationFrame(_=>{
-//                 this.element.style.animation = `shake ${randomTime}ms`;   
-//                 this.element.style.webkitAnimation = `shake ${randomTime}ms`;                            
-//             });
-//         });
-//         setTimeout(_=>{
-//             this.value = Math.floor(Math.random() * 6) + 1;            
-//         }, randomTime);
-
-//         return this.value;
-//     }
-
-//     constructor(private element?: HTMLElement, autoroll = true) {
-//         this.value = '6';
-//         if(autoroll) {
-//             this.roll();
-//         }
-//         this.element.addEventListener('click', e => {
-//             this.locked = !this.locked;
-//         });
-//     }
-// }
