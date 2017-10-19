@@ -2,8 +2,17 @@ class DiceElement extends HTMLElement {
 
     private _value:number;
     public set value(val:any) {
+        if(parseInt(val) === this._value) {
+            return;
+        }
         this._value = parseInt(val);
-        this.valueContainer.innerText = this._value.toString();
+        this.setAttribute('value',val);
+
+        let dotsStr='';
+        for (let i = 0; i < val; i++){
+            dotsStr+=`<div class="dot"></div>`;
+        }
+        this.innerHTML = dotsStr;
     }
     public get value() {
         return this._value;
@@ -40,10 +49,7 @@ class DiceElement extends HTMLElement {
         }
     }
 
-    valueContainer:HTMLDivElement;
     connectedCallback() {
-        this.valueContainer = <HTMLDivElement>document.createElement('div');
-        this.appendChild(this.valueContainer);
         /* Set default value */
         this.value = 6;
     }

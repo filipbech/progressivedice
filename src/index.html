@@ -82,17 +82,129 @@
             display:block;
         }
         p-dice {
-            display:block;
-            border:4px solid #000;
-            box-sizing: border-box;
-            border-radius: 6px;
-            float: left;
-            position: relative;
+            border: solid 4px #aaa;
+            border-radius: 8px;
+            display: block;
             width: 30%;
+            height:0;
             padding-bottom: 30%;
             margin: 0 5% 5% 0;
+            box-sizing: border-box;
+            position: relative;
+            box-sizing: border-box;
+            float: left;
             cursor: pointer;
-        }
+          }
+          p-dice .dot {
+            border-radius: 50%;
+            position: absolute;
+            width: 15%;
+            height: 15%;
+            background: #000;
+          }
+          
+          p-dice[value="1"] .dot {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+          }
+          
+          p-dice[value="2"] .dot:first-child {
+            top: 20%;
+            left: 20%;
+          }
+          p-dice[value="2"] .dot:last-child {
+            bottom: 20%;
+            right: 20%;
+          }
+          
+          p-dice[value="3"] .dot:first-child {
+            top: 15%;
+            left: 15%;
+          }
+          p-dice[value="3"] .dot:nth-child(2) {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+          }
+          p-dice[value="3"] .dot:last-child {
+            bottom: 15%;
+            right: 15%;
+          }
+          
+          p-dice[value="4"] .dot:first-child {
+            top: 15%;
+            left: 15%;
+          }
+          p-dice[value="4"] .dot:nth-child(2) {
+            top: 15%;
+            right: 15%;
+          }
+          p-dice[value="4"] .dot:nth-child(3) {
+            bottom: 15%;
+            left: 15%;
+          }
+          p-dice[value="4"] .dot:last-child {
+            bottom: 15%;
+            right: 15%;
+          }
+          
+          p-dice[value="5"] .dot:first-child {
+            top: 15%;
+            left: 15%;
+          }
+          p-dice[value="5"] .dot:nth-child(2) {
+            top: 15%;
+            right: 15%;
+          }
+          p-dice[value="5"] .dot:nth-child(3) {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+          }
+          p-dice[value="5"] .dot:nth-child(4) {
+            bottom: 15%;
+            left: 15%;
+          }
+          p-dice[value="5"] .dot:last-child {
+            bottom: 15%;
+            right: 15%;
+          }
+          
+          p-dice[value="6"] .dot:first-child {
+            top: 15%;
+            left: 15%;
+          }
+          p-dice[value="6"] .dot:nth-child(2) {
+            top: 15%;
+            right: 15%;
+          }
+          p-dice[value="6"] .dot:nth-child(3) {
+            top: 0;
+            bottom: 0;
+            left: 15%;
+            margin: auto;
+          }
+          p-dice[value="6"] .dot:nth-child(4) {
+            top: 0;
+            right: 15%;
+            bottom: 0;
+            margin: auto;
+          }
+          p-dice[value="6"] .dot:nth-child(5) {
+            bottom: 15%;
+            left: 15%;
+          }
+          p-dice[value="6"] .dot:last-child {
+            bottom: 15%;
+            right: 15%;
+          }
         p-dice:nth-of-type(3n+1) {
             /* First in the row*/
             margin-left:0;
@@ -103,13 +215,7 @@
         }
 
 
-        p-dice div {
-            font-size:35px;
-            position:absolute;
-            left:50%;
-            top:50%;
-            transform:translate(-50%,-50%);
-        }
+       
         p-dice.locked {
             border-color:red;
         }
