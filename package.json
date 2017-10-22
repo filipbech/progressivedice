@@ -4,8 +4,8 @@
   "description": "Virtual dice",
   "main": "index.html",
   "scripts": {
-    "watch": "copyfiles src/*.html src/*.json src/icon/* copyfiles src/*.html node_modules/shake.js/shake.js public --up && tsc --watch",
-    "deploy": "copyfiles src/*.html src/*.json src/icon/* node_modules/shake.js/shake.js public --up && tsc && firebase deploy"
+    "watch": "copyfiles src/*.html src/*.json src/icon/* src/webcomponents-lite.js node_modules/shake.js/shake.js public --up && tsc --watch",
+    "deploy": "copyfiles src/*.html src/*.json src/icon/* src/webcomponents-lite.js node_modules/shake.js/shake.js public --up && tsc && firebase deploy"
   },
   "repository": {
     "type": "git",

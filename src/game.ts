@@ -67,8 +67,6 @@ class DiceElement extends HTMLElement {
         return this.value;
     }
 }
-customElements.define('p-dice', DiceElement);
-
 
 class Game {
     private diceList: DiceElement[];
@@ -165,8 +163,6 @@ class Game {
     }
 }
 
-const game = new Game(document.getElementById('game'));
-
 if('ondevicemotion' in window) {
     const scriptTag = document.createElement('script');
     scriptTag.onload = function() {
@@ -179,4 +175,19 @@ if('ondevicemotion' in window) {
     document.body.appendChild(scriptTag);
 }
 
-
+var game;
+(function() {
+    if ('registerElement' in document && 'import' in document.createElement('link') && 'content' in document.createElement('template')) {
+        customElements.define('p-dice', DiceElement);
+        game = new Game(document.getElementById('game'));
+    } else {
+        // polyfill the platform!
+        var e = document.createElement('script');
+        e.src = 'webcomponents-lite.js';
+        document.body.appendChild(e);
+        e.onload = function() {
+            customElements.define('p-dice', DiceElement);
+            game = new Game(document.getElementById('game'));
+        }
+    }
+})();
